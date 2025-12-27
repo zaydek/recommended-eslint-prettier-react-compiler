@@ -75,4 +75,4 @@ export default defineConfig([
 
 ---
 
-Questions? Check the `CONTEXT/` docs or [open an issue](https://github.com/zaydek/recommended-eslint-prettier-react-compiler/issues).
+Questions? Check the `CONTEXT/` docs.
