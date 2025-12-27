@@ -1,0 +1,4 @@
+{
+  "objectWrap": "preserve",
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
