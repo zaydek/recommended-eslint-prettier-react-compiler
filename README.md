@@ -15,10 +15,10 @@ Vite's default template is great for prototyping, but leaves tooling decisions t
 
 ## Documentation
 
-| Feature            | Config             | Details                                      |
-| :----------------- | :----------------- | :------------------------------------------- |
-| **ESLint (Flat)**  | `eslint.config.js` | [CONTEXT/ESLINT.md](./CONTEXT/ESLINT.md)     |
-| **Prettier**       | `.prettierrc`      | [CONTEXT/PRETTIER.md](./CONTEXT/PRETTIER.md) |
+| Feature            | Config             | Details                                                  |
+| :----------------- | :----------------- | :------------------------------------------------------- |
+| **ESLint (Flat)**  | `eslint.config.js` | [CONTEXT/ESLINT.md](./CONTEXT/ESLINT.md)                 |
+| **Prettier**       | `.prettierrc`      | [CONTEXT/PRETTIER.md](./CONTEXT/PRETTIER.md)             |
 | **React Compiler** | `vite.config.ts`   | [CONTEXT/REACT_COMPILER.md](./CONTEXT/REACT_COMPILER.md) |
 
 ## Applying to Your Project
@@ -59,13 +59,13 @@ export default defineConfig([
 ]);
 ```
 
-| Layer                          | Purpose                                   |
-| :----------------------------- | :---------------------------------------- |
+| Layer                          | Purpose                                     |
+| :----------------------------- | :------------------------------------------ |
 | `baseConfig`                   | Core TypeScript, React Hooks, React Refresh |
-| `prettierLayer`                | Prettier integration via ESLint           |
-| `explicitReturnTypesLayer`     | Enforces return types on functions        |
-| `requireExplicitGenericsLayer` | Enforces generics on `useState`, `useRef` |
-| `noDefaultExportsLayer`        | Enforces named exports only               |
+| `prettierLayer`                | Prettier integration via ESLint             |
+| `explicitReturnTypesLayer`     | Enforces return types on functions          |
+| `requireExplicitGenericsLayer` | Enforces generics on `useState`, `useRef`   |
+| `noDefaultExportsLayer`        | Enforces named exports only                 |
 
 ## Notes
 
