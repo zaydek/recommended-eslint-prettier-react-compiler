@@ -59,13 +59,52 @@ export default defineConfig([
 ]);
 ```
 
-| Layer                          | Purpose                                     |
-| :----------------------------- | :------------------------------------------ |
-| `baseConfig`                   | Core TypeScript, React Hooks, React Refresh |
-| `prettierLayer`                | Prettier integration via ESLint             |
-| `explicitReturnTypesLayer`     | Enforces return types on functions          |
-| `requireExplicitGenericsLayer` | Enforces generics on `useState`, `useRef`   |
-| `noDefaultExportsLayer`        | Enforces named exports only                 |
+| Layer                          | Purpose                                                                 |
+| :----------------------------- | :---------------------------------------------------------------------- |
+| `baseConfig`                   | Core TypeScript + React Hooks/Refresh rules for type-safe React apps   |
+| `prettierLayer`                | Disables ESLint formatting rules to prevent Prettier conflicts         |
+| `explicitReturnTypesLayer`     | Requires return types on function declarations for self-documenting APIs |
+| `requireExplicitGenericsLayer` | Requires explicit generics on React hooks to prevent type inference issues |
+| `noDefaultExportsLayer`        | Enforces named exports in `src/` for better refactoring and auto-imports |
+
+<details>
+<summary><strong>Layer details</strong></summary>
+
+### `explicitReturnTypesLayer`
+
+Requires return types on function declarations only (arrow functions are exempt).
+
+```ts
+// ✓ Required
+function getData(): string { ... }
+
+// ✓ Arrow functions exempt
+const getData = () => { ... }
+```
+
+_Why:_ Explicit types catch errors early and prevent accidental API changes.
+
+### `requireExplicitGenericsLayer`
+
+Applies to: `useState`, `useRef`, `useReducer`, `createContext`, etc.
+
+```ts
+// ✗ Avoid
+const [count, setCount] = useState(0)
+
+// ✓ Preferred
+const [count, setCount] = useState<number>(0)
+```
+
+_Why:_ Prevents inference pitfalls—`useState()` implies `undefined`, explicit generics force you to define the full type.
+
+### `noDefaultExportsLayer`
+
+Applies only to `**/src/**/*.{ts,tsx}`. Config files and tests are unaffected.
+
+_Why:_ Named exports ensure import names match component names, making global refactoring safer and auto-imports more reliable.
+
+</details>
 
 ## Notes
 
