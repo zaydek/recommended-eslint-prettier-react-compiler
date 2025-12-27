@@ -59,13 +59,13 @@ export default defineConfig([
 ]);
 ```
 
-| Layer                          | Purpose                                                                 |
-| :----------------------------- | :---------------------------------------------------------------------- |
-| `baseConfig`                   | Core TypeScript + React Hooks/Refresh rules for type-safe React apps   |
-| `prettierLayer`                | Disables ESLint formatting rules to prevent Prettier conflicts         |
-| `explicitReturnTypesLayer`     | Requires return types on function declarations for self-documenting APIs |
+| Layer                          | Purpose                                                                    |
+| :----------------------------- | :------------------------------------------------------------------------- |
+| `baseConfig`                   | Core TypeScript + React Hooks/Refresh rules for type-safe React apps       |
+| `prettierLayer`                | Disables ESLint formatting rules to prevent Prettier conflicts             |
+| `explicitReturnTypesLayer`     | Requires return types on function declarations for self-documenting APIs   |
 | `requireExplicitGenericsLayer` | Requires explicit generics on React hooks to prevent type inference issues |
-| `noDefaultExportsLayer`        | Enforces named exports in `src/` for better refactoring and auto-imports |
+| `noDefaultExportsLayer`        | Enforces named exports in `src/` for better refactoring and auto-imports   |
 
 <details>
 <summary><strong>Layer details</strong></summary>
@@ -90,10 +90,10 @@ Applies to: `useState`, `useRef`, `useReducer`, `createContext`, etc.
 
 ```ts
 // ✗ Avoid
-const [count, setCount] = useState(0)
+const [count, setCount] = useState(0);
 
 // ✓ Preferred
-const [count, setCount] = useState<number>(0)
+const [count, setCount] = useState<number>(0);
 ```
 
 _Why:_ Prevents inference pitfalls—`useState()` implies `undefined`, explicit generics force you to define the full type.
